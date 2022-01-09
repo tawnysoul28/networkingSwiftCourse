@@ -68,4 +68,25 @@ class NetworkManager {
         }.resume()
                 
     }
+    
+    func getPostBy(userId: Int, completionHandler: @escaping ([Post]) -> ()) {
+        guard let url = URL(string: baseURL + APIs.posts.rawValue) else { return }
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        components?.queryItems = [URLQueryItem(name: "userId", value: "\(userId)")] //https://jsonplaceholder.typicode.com/posts?userId=1
+        
+        guard let queryURL = components?.url else { return } //url с установленными query параметрами
+        
+        URLSession.shared.dataTask(with: queryURL) { data, response, error in
+            
+            if error != nil {
+                print("error getPostBy")
+            } else if let resp = response as? HTTPURLResponse, resp.statusCode == 200, let recieveData = data {
+                
+                let posts = try? JSONDecoder().decode([Post].self, from: recieveData)
+                
+                completionHandler(posts ?? [])
+            }
+        }
+        
+    } //completionHandler вернёт мне массив постов определённого юзера с сервера
 }

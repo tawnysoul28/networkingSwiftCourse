@@ -38,12 +38,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func createPost(_ sender: Any) {
- 
-        
         let post = Post(userId: 1, title: "myTitle", body: "myBody")
         
         networkManager.postCreatePost(post) { postFromServer in
-            post.id = postFromServer.id
+            post.id = postFromServer.id //обновили post.id на тот, который пришел с сервера в response
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Great!", message: "Your post has benn created", preferredStyle: .alert)
                 self.present(alert, animated: true, completion: nil)
