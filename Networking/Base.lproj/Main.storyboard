@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="720-o2-6vp">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -16,40 +16,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="wSL-cQ-0Ex">
-                                <rect key="frame" x="121" y="411" width="172" height="84.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to download posts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUE-IF-P1e">
-                                        <rect key="frame" x="0.0" y="0.0" width="172" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXZ-ey-lna">
-                                        <rect key="frame" x="22" y="53.5" width="128" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Download posts"/>
-                                        <connections>
-                                            <action selector="downloadPostsDidTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="LVh-br-zQg"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Qfq-3b-Xan">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="wSL-cQ-0Ex" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="1aG-vv-R4g"/>
-                            <constraint firstItem="wSL-cQ-0Ex" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qRs-SP-qNS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qfq-3b-Xan" secondAttribute="bottom" id="9nP-aV-dEm"/>
+                            <constraint firstItem="Qfq-3b-Xan" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LAb-wA-RnJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qfq-3b-Xan" secondAttribute="trailing" id="jnG-Cx-5ic"/>
+                            <constraint firstItem="Qfq-3b-Xan" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zxt-S3-qIR"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="aIT-QU-cB0">
+                        <barButtonItem key="rightBarButtonItem" title="Create post" id="JOE-fo-kAn">
+                            <connections>
+                                <action selector="createPost:" destination="BYZ-38-t0r" id="MBV-tY-Ssl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="titleLabel" destination="MUE-IF-P1e" id="bg9-LG-iLv"/>
+                        <outlet property="tableView" destination="Qfq-3b-Xan" id="Tk4-e0-M5U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-14" y="98"/>
+            <point key="canvasLocation" x="895.6521739130435" y="97.767857142857139"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="SqE-gO-2CP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="720-o2-6vp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mY0-GT-d5V">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="X0L-oE-jav"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HEd-y0-03y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-14.492753623188406" y="97.767857142857139"/>
         </scene>
     </scenes>
     <resources>
