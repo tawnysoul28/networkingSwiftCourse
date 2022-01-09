@@ -86,7 +86,7 @@ class NetworkManager {
                 
                 completionHandler(posts ?? [])
             }
-        }
+        }.resume()
         
     } //completionHandler вернёт мне массив постов определённого юзера с сервера
 }

@@ -29,7 +29,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkManager.getAllPosts { [weak self] posts in
+        
+        // MARK: - Получение всех постов
+//        networkManager.getAllPosts { [weak self] posts in
+//            DispatchQueue.main.async {
+//                self?.posts = posts
+//            }
+//        }
+        
+        // MARK: - Получение постов у третьего юзера
+        networkManager.getPostBy(userId: 3) { [weak self] posts in
             DispatchQueue.main.async {
                 self?.posts = posts
             }
